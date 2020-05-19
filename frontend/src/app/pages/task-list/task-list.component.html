@@ -1,0 +1,54 @@
+<section class="section1">
+        <div class="container">
+            <div class="row">
+                <div class="sidebar col-md-3">
+                    <div class="container">
+                            <h1 class="title has-text-primary">Lists</h1>
+                        <div class="list-menu container">
+                            <div>
+                                <a [routerLink]="['/lists', list._id]" class="list-menu-item litem" *ngFor="let list of lists">
+                                    <p class="white-text menu1 menu2 " [class.active1]="list._id==this.listId">
+                                        {{list.title}}
+                                        <span class="btn task-delete btn-rounded" (click)="deleteList(list)">X</span>
+                                    </p>
+                                </a>
+                            </div>
+                            <div *ngIf="this.showinput">
+                                <input id="inputlist" name="input1">
+                            </div>
+                            <div class="text-center" *ngIf="!this.showinput">
+                                <button class="btn btn-lg btn-rounded-corners listbtn" (click)="showinputfield()">Add List</button>
+                            </div>
+                            <div class="text-center" *ngIf="this.showinput">
+                                <button class="btn btn-lg btn-rounded-corners listbtn" (click)="addList()">SAVE</button>
+                                <button class="btn btn-lg btn-rounded-corners listbtndel" (click)="cancel_list()">CANCEL</button>
+                            </div>
+                        </div>
+                    </div>
+               </div> 
+               <div class="sidebar scol col-md-7">
+                    <div class="container">
+                            <h1 class="title has-text-primary">Tasks</h1>
+                        <div class="list-menu container" [class.complete]="task.completed" *ngFor="let task of tasks" (click)="onTaskClick(task)">
+                                <p class="white-text menu1">
+                                    {{task.title}}
+                                    <span class="btn task-delete" (click)="deleteTask(task)">X</span>
+                                </p>
+                        </div>
+                        <div *ngIf="this.showtinput" class="text-center">
+                            <input  id="task23" class="task-input" type="text" placeholder="ENTER TASK TITLE">
+                        </div>
+                        <div class="position" *ngIf="!this.showtinput">
+                            <button class="btn btn-lg btn-rounded-corners listbtn" (click)="showtinputfield()">Add Task</button>
+                        </div>
+                        <div class="text-center position row" *ngIf="this.showtinput">
+                            <button class="btn btn-lg btn-rounded-corners listbtn col-md-5" (click)="addTask()">SAVE</button>
+                            <div class="col-md-1"></div>
+                            <button class="btn btn-lg btn-rounded-corners listbtndel col-md-5" (click)="cancel_task()">CANCEL</button>
+                        </div>
+                    </div>
+              </div> 
+            </div>
+          
+        </div>
+</section>
