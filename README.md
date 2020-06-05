@@ -10,6 +10,9 @@ MongoDB is used to store the data(locally).
 # TECHNOLOGIES USED
 MongoDB , AngularJs , NodeJs(Express) , PassportJs(Authentication)
 
+# AUTHOR
+Adish Aggarwal
+
 # SCREENSHOTS
 
 ![](images/1.JPG)
