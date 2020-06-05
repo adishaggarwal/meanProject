@@ -3,7 +3,6 @@ import List from'src/app/models/list';
 import Task from 'src/app/models/task';
 import { TaskService } from 'src/app/task.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import {ngModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 
@@ -23,10 +22,13 @@ export class TaskListComponent implements OnInit {
   name1:string;
   showtinput:boolean;
   abc:any;
+  userDetails:any;
   
   constructor(private taskService:TaskService,
     private route:ActivatedRoute,
-    private router:Router) { }
+    private router:Router) { 
+      this.userDetails=[];
+    }
 
   ngOnInit(): void {
     this.taskService.getLists()
@@ -37,6 +39,21 @@ export class TaskListComponent implements OnInit {
         if(!this.listId) return;
         this.taskService.getTasks(this.listId).subscribe((tasks:Task[])=> this.tasks = tasks);
       });
+
+      this.taskService.getUserProfile().subscribe(
+        res => {
+          this.userDetails = res['user'];
+          console.log(this.userDetails);
+        },
+        err => { 
+          console.log(err);
+          
+        }
+      );
+  }
+  onLogout(){
+    this.taskService.deleteToken();
+    this.router.navigate(['/signin']);
   }
 
   onTaskClick(task)

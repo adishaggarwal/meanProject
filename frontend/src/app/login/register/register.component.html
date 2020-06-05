@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="tab1 d-flex flex-column ">
+      <div *ngIf="submitted" class="text-center banner">
+        <h1>Congratulations! You are registered successfully!</h1>
+    </div>
+        <div class="text-center">
+            <img id="img1" src="assets/images/m.png" alt="dadadad">
+        </div>
+        <div class="text-center">
+            <h2 class="rheading">REGISTER</h2>
+        </div>
+        <div class="text-center">
+            <form>
+                <div class="d-flex flex-column">
+                  <div class="text-center"><span class="help-block" *ngIf="avail2">This Email is already registered, Please try again!</span></div>
+                  <div class="text-center"><span class="help-block" *ngIf="availalert">It's great! This email is available!</span></div>
+                  <div class="form-group d-flex justify-content-center nomargin">
+                    <input
+                      type="text"
+                      id="name"
+                      class="form-control rinput"
+                      name="name"
+                      placeholder="Enter Name"
+                      [(ngModel)]="name"
+                      [readonly]="disable"> 
+                  </div>
+                  <div class="text-center"><span class="help-block" *ngIf="!name && showalert">Please enter a valid name!</span></div>
+                  
+                  <div class="form-group d-flex justify-content-center nomargin">
+                    <input
+                      type="email"
+                      id="email"
+                      class="form-control rinput"
+                      name="email"
+                      placeholder="Enter Email"
+                      [(ngModel)]="email"
+                      [readonly]="disable"
+                      (input)="validemail($event.target.value)"
+                      >
+                  </div>
+                  <div class="text-center"><span class="help-block" *ngIf="showalert && vemail">Please enter a valid email!</span></div>
+                  
+                  <div class="form-group d-flex justify-content-center nomargin">
+                      <input
+                        type="password"
+                        id="password"
+                        class="form-control rinput"
+                        name="password"
+                        placeholder="Enter Password"
+                        [(ngModel)]="password"
+                        [readonly]="disable">
+                    </div>
+                    <div class="text-center"><span class="help-block" *ngIf="(password.length < 6) && showalert">Password length should be atleast 6</span></div>
+                   
+                    <div class="form-group d-flex justify-content-center nomargin">
+                      <input
+                        type="password"
+                        id="password2"
+                        class="form-control rinput"
+                        name="password2"
+                        placeholder="Re-enter Password"
+                        [(ngModel)]="password2"
+                        [readonly]="disable">
+                    </div>
+                    <div class="text-center"><span class="help-block" *ngIf="(password != password2) && showalert">Password does not match</span></div>
+                    <div *ngIf="!hide" class="form-group d-flex justify-content-center nomargin2">
+                      <button class="btn rbtn btn-primary" (click)="checkavailability(email)" >Check Availability</button>
+                  </div>
+                  <div *ngIf="shownewacc && available" class="form-group d-flex justify-content-center">
+                    <button class="btn rbtn btn-primary" (click)="clearform()" type="submit">Register new account</button>
+                </div>
+                    <div *ngIf="showreg && available" class="form-group d-flex justify-content-center">
+                        <button class="btn rbtn btn-primary" (click)="onSubmit()" type="submit">Register</button>
+                    </div>
+                    <div class="form-group d-flex justify-content-center">
+                        <p>Have an account?? <a class="rlink" routerLink="/signin">Login</a></p>
+                    </div>
+                </div>
+               
+               
+                
+                
+              </form>
+        </div>
+        
+    </div>
+   
+</div>
+
+
+
+  

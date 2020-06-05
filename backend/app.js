@@ -2,11 +2,22 @@ const express = require('express');
 const app=express();
 app.use(express.json());
 const mongoose=require('./database/mongoose');
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+const bcrypt=require('bcryptjs');
+const passport=require('passport');
+const cors=require('cors');
+app.use(cors());
+
+const rtsIndex=require('./routes/index.router');
+app.use('/api',rtsIndex);
+
+
 
 const List=require('./database/models/list');
 const Task=require('./database/models/task');
-
-
+const User=require('./database/models/User');
+require('./config/passportConfig');
 
 //CORS 
 app.use((req,res,next)=>{
@@ -15,6 +26,48 @@ app.use((req,res,next)=>{
     res.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type,Accept");
     next();
 })
+
+app.use(passport.initialize());
+const jwtHelper=require('./config/jwtHelper');
+
+app.get('/check',(req,res)=>{
+    User.find()
+    .then((users)=>{
+        res.send(users);
+})
+.catch((error)=>console.log(error)); 
+}); 
+
+app.post('/register', (req, res) => {
+    const { name, email, password } = req.body;
+        //validation passed
+        console.log("backend");
+        console.log(req.body);
+                    const newUser=new User({
+                        name,
+                        email,
+                        password
+                    });
+
+                    //hash password
+                    bcrypt.genSalt(10,(err,salt)=>bcrypt.hash(newUser.password,salt,(err,hash)=>{
+                        if(err) throw err;
+
+                        //set password to hashed
+                        newUser.password=hash;
+                        //save user
+                        newUser.save() 
+                        .then((user)=> res.send(user)
+                        )
+                        .catch(err=>console.log(err));
+                    }))
+                
+            });
+
+           
+
+
+
 
 //List Create,update,readone,readall,delete
 //Task Create,update,readone,readall,delete

@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Nunito:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
  
 .section1{
     background-color: #fc7116;
-    height: 100vh;
+    min-height: 100vh;
 }
 .sidebar{
     margin-top: 100px;
@@ -105,4 +107,82 @@ input{
     position: absolute;
     bottom: 30px;
     right: 30px;
+}
+
+.b1,.b2 {
+    padding: 4px 42px;
+    font-size: 25px;
+    margin-top: 10px;
+    background-color: #41883f;
+    min-width: 330px;
+}
+
+.b2{
+    color:#41883f;
+    background-color: white;
+    border: 1px solid #41883f;
+}
+.tab1{
+    margin-top: 80px;
+}
+#img1{
+    height: 30%;
+    width: 30%;
+}
+
+.rinput,.rbtn,.rbtn2{
+    width: 50%;
+}
+
+.rbtn{
+    background-color: #12924f;
+    color: #ffffff;
+}
+.rbtn2{
+    background-color: #a6120d;
+    color: white;
+}
+
+.rbtn:hover{
+    background-color:#41883f;
+}
+.rbtn2:hover{
+background-color: #670b08;
+}
+
+.rheading,.rlink{
+    color: #12924f;
+}
+.rheading2,.rlink2{
+    color: #a6120d;
+}
+
+.rlink:hover,.rlink2:hover{
+    color: black;
+}
+
+.help-block{
+    background-color: #96e1ba;
+}
+.nomargin{
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+.nomargin2{
+    margin-top: 10px;
+}
+
+.banner{
+    margin-bottom: 10px;
+    background-color: #37d89c;
+    color: #ffffff;
+    font-family: 'Playfair Display', serif;
+}
+
+.alert {
+    color: white;
+    background-color: #b0211c;
+    font-size: 25px;
+    font-weight: 600;
 }
