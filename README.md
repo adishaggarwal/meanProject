@@ -1,7 +1,3 @@
-![](images/1.JPG)
-![](images/2.JPG)
-![](images/3.JPG)
-
 
 # TASK MANAGER
 This task manager application manages tasks for you. You can mantain multiple lists each having it's own task.
@@ -11,5 +7,12 @@ The application is accessable to only registered users,so you have to register f
 
 # TECHNOLOGIES USED
 MongoDB , AngularJs , NodeJs(Express) , PassportJs(Authentication)
+
+# SCREENSHOTS
+
+![](images/1.JPG)
+![](images/2.JPG)
+![](images/3.JPG)
+
 
 
